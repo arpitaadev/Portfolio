@@ -1,0 +1,22 @@
+.page { padding: 130px 0 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; align-items: start; }
+.intro { margin-bottom: 28px; max-width: 420px; }
+.info { list-style: none; padding: 0; display: grid; gap: 14px; li { display: flex; gap: 16px; } span { width: 90px; color: var(--muted); font-family: var(--font-mono); font-size: 0.82rem; padding-top: 3px; } a:hover { color: var(--cyan); } }
+
+.form-card:hover { transform: none; }
+form { display: grid; gap: 18px; }
+label { display: grid; gap: 6px; font-size: 0.88rem; font-weight: 500; }
+input, textarea {
+  width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font: inherit; resize: vertical; transition: border-color 0.2s;
+  &:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25); }
+  &.bad { border-color: #f87171; }
+}
+small { color: #f87171; font-weight: 400; }
+.err { color: #f87171; }
+.hp { position: absolute; left: -9999px; height: 0; opacity: 0; }
+button[disabled] { opacity: 0.6; cursor: wait; }
+
+.done { text-align: center; display: grid; gap: 12px; justify-items: center; padding: 20px 0; }
+.tick { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; color: #0a0a14; background: var(--grad); }
+
+@media (max-width: 820px) { .page { grid-template-columns: 1fr; gap: 30px; } }

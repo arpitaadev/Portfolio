@@ -1,0 +1,46 @@
+<section class="page container">
+  <div>
+    <p class="eyebrow">Contact</p>
+    <h1 class="section-title">Let's <span class="grad-text">talk</span></h1>
+    @if (profile$ | async; as p) {
+      <p class="muted intro">Hiring, collaborating, or just curious about AI? Send a message and I'll get back to you.</p>
+      <ul class="info">
+        <li><span>Email</span><a [href]="'mailto:' + p.email">{{ p.email }}</a></li>
+        <li><span>Location</span>{{ p.location }}</li>
+        @if (p.socials.linkedin) { <li><span>LinkedIn</span><a [href]="p.socials.linkedin" target="_blank" rel="noopener">Connect ↗</a></li> }
+        @if (p.socials.github) { <li><span>GitHub</span><a [href]="p.socials.github" target="_blank" rel="noopener">Follow ↗</a></li> }
+      </ul>
+    }
+  </div>
+
+  <div class="card form-card">
+    @if (status() === 'sent') {
+      <div class="done" role="status">
+        <div class="tick">✓</div>
+        <h3>Message sent!</h3>
+        <p class="muted">Thanks for reaching out. I'll reply soon.</p>
+        <button class="btn" (click)="status.set('idle')">Send another</button>
+      </div>
+    } @else {
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <label>Name
+          <input formControlName="name" autocomplete="name" [class.bad]="invalid('name')">
+          @if (invalid('name')) { <small>Please enter your name (2+ characters).</small> }
+        </label>
+        <label>Email
+          <input type="email" formControlName="email" autocomplete="email" [class.bad]="invalid('email')">
+          @if (invalid('email')) { <small>Please enter a valid email.</small> }
+        </label>
+        <label>Message
+          <textarea rows="5" formControlName="message" [class.bad]="invalid('message')"></textarea>
+          @if (invalid('message')) { <small>Message should be at least 10 characters.</small> }
+        </label>
+        <input class="hp" formControlName="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        @if (status() === 'error') { <p class="err" role="alert">{{ error() }}</p> }
+        <button class="btn primary" type="submit" [disabled]="status() === 'sending'">
+          {{ status() === 'sending' ? 'Sending…' : 'Send message →' }}
+        </button>
+      </form>
+    }
+  </div>
+</section>

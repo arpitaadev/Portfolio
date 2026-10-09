@@ -1,0 +1,135 @@
+@if (profile$ | async; as p) {
+  <!-- HERO -->
+  <section class="hero">
+    <app-neural-bg />
+    <div class="glow g1"></div><div class="glow g2"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow">Hello, I'm</p>
+      <h1>{{ p.name }}.<br><span class="role">I'm an <app-typewriter [words]="p.roles" /></span></h1>
+      <p class="lead">{{ p.tagline }}</p>
+      <div class="actions">
+        <a routerLink="/projects" class="btn primary">View my work →</a>
+        <a [href]="p.resume_url" class="btn" download>Resume ↓</a>
+        <a routerLink="/contact" class="btn">Get in touch</a>
+      </div>
+      <ul class="stats">
+        @for (s of p.stats; track s.label) {
+          <li><strong>{{ s.value }}</strong><span>{{ s.label }}</span></li>
+        }
+      </ul>
+    </div>
+    <a href="#about" class="scroll" aria-label="Scroll to about"><span></span></a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div appReveal>
+        <p class="eyebrow">01 · About</p>
+        <h2 class="section-title">Turning messy problems into <span class="grad-text">intelligent products</span></h2>
+      </div>
+      <div class="about-body">
+        @for (para of p.about; track $index) { <p appReveal [delay]="$index * 100">{{ para }}</p> }
+        @for (e of p.education; track e.degree) {
+          <div class="edu card" appSpotlight appReveal [delay]="300">
+            <span class="tag">Education</span>
+            <h3>{{ e.degree }}</h3>
+            <p class="muted">{{ e.detail }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section alt">
+    <div class="container">
+      <div appReveal>
+        <p class="eyebrow">02 · Skills</p>
+        <h2 class="section-title">My toolkit</h2>
+      </div>
+      <div class="skill-grid">
+        @for (g of p.skills; track g.group; let i = $index) {
+          <article class="card" appSpotlight appReveal [delay]="i * 90">
+            <h3>{{ g.group }}</h3>
+            <div class="chips">@for (s of g.items; track s) { <span class="tag">{{ s }}</span> }</div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section">
+    <div class="container">
+      <div class="head" appReveal>
+        <div><p class="eyebrow">03 · Projects</p><h2 class="section-title">Featured work</h2></div>
+        <a routerLink="/projects" class="btn">All projects →</a>
+      </div>
+      <div class="proj-grid">
+        @for (pr of featured$ | async; track pr.slug; let i = $index) {
+          <a [routerLink]="['/projects', pr.slug]" class="card proj" appSpotlight appReveal [delay]="i * 120">
+            <span class="status">{{ pr.status }}</span>
+            <h3>{{ pr.title }}</h3>
+            <p class="muted">{{ pr.summary }}</p>
+            <div class="chips">@for (t of pr.tags; track t) { <span class="tag">{{ t }}</span> }</div>
+            <span class="more">Read more →</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section alt">
+    <div class="container">
+      <div appReveal>
+        <p class="eyebrow">04 · Experience</p>
+        <h2 class="section-title">Where I've been building</h2>
+      </div>
+      <ol class="timeline">
+        @for (e of p.experience; track e.role) {
+          <li appReveal>
+            <span class="pin"></span>
+            <div class="card" appSpotlight>
+              <div class="row"><h3>{{ e.role }}</h3><span class="tag">{{ e.period }}</span></div>
+              <p class="company">{{ e.company }}</p>
+              <ul>@for (pt of e.points; track pt) { <li>{{ pt }}</li> }</ul>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  @if (p.publications.length) {
+    <section class="section">
+      <div class="container">
+        <div appReveal>
+          <p class="eyebrow">05 · Research</p>
+          <h2 class="section-title">Publications</h2>
+        </div>
+        @for (pub of p.publications; track pub.title) {
+          <article class="card pub" appSpotlight appReveal>
+            <span class="tag">{{ pub.venue }}</span>
+            <h3>{{ pub.title }}</h3>
+            <p class="muted">{{ pub.summary }}</p>
+            @if (pub.link) { <a [href]="pub.link" target="_blank" rel="noopener" class="btn">Read paper ↗</a> }
+          </article>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- CTA -->
+  <section class="section cta-band">
+    <div class="container" appReveal>
+      <h2>Have a role or an idea in mind?</h2>
+      <p class="muted">I'm open to AI developer opportunities with global teams.</p>
+      <a routerLink="/contact" class="btn primary">Let's build something →</a>
+    </div>
+  </section>
+} @else {
+  <div class="loading"><span></span><span></span><span></span></div>
+}

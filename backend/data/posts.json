@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "hello-world-building-in-public",
+    "title": "Hello, world: building my portfolio in public",
+    "date": "2026-10-06",
+    "tags": ["Portfolio", "Angular", "FastAPI"],
+    "excerpt": "Why I built my portfolio with Angular and FastAPI, and what I'm planning to write about.",
+    "content": "I decided to build my portfolio like a real product: an Angular front end, a Python FastAPI backend, and a small retrieval-based assistant that can answer questions about my work.\n\nOver the next few weeks I'll write about the AI agent I'm building, lessons from deploying language models locally, and how I think about retrieval-augmented generation.\n\nThis post is a placeholder. Edit backend/data/posts.json to add your own."
+  }
+]

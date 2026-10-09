@@ -1,0 +1,105 @@
+{
+  "name": "Arpita",
+  "title": "AI Developer",
+  "tagline": "I build intelligent systems that read, reason and act.",
+  "roles": [
+    "AI Developer",
+    "LLM & RAG Engineer",
+    "Full-Stack Builder",
+    "Deep Learning Researcher"
+  ],
+  "location": "Pune, India",
+  "email": "shindearpita787@gmail.com",
+  "resume_url": "/api/resume",
+  "socials": {
+    "github": "",
+    "linkedin": ""
+  },
+  "about": [
+    "I'm an AI developer based in Pune with a B.Tech in Artificial Intelligence and Data Science. I enjoy turning messy, real-world problems into reliable AI-powered products, from model to API to interface.",
+    "My toolkit spans OCR and document understanding, retrieval-augmented generation, local LLM deployment, and full-stack integration with Python, FastAPI and Angular.",
+    "Beyond code, I've published research on pomegranate disease detection using deep learning, and I've led student communities as Vice President of the AI & Data Science Department."
+  ],
+  "stats": [
+    {
+      "label": "Research paper published",
+      "value": "1"
+    },
+    {
+      "label": "Core stack",
+      "value": "Python + Angular"
+    },
+    {
+      "label": "Focus",
+      "value": "LLMs, RAG, CV"
+    }
+  ],
+  "skills": [
+    {
+      "group": "AI & ML",
+      "items": [
+        "Deep Learning",
+        "Computer Vision",
+        "LLMs",
+        "RAG",
+        "OCR",
+        "Prompt Engineering",
+        "Local LLM Deployment"
+      ]
+    },
+    {
+      "group": "Backend",
+      "items": [
+        "Python",
+        "FastAPI",
+        "REST APIs",
+        "SQLAlchemy (planned)",
+        "Java Spring Boot"
+      ]
+    },
+    {
+      "group": "Frontend",
+      "items": [
+        "Angular",
+        "TypeScript",
+        "RxJS",
+        "SCSS"
+      ]
+    },
+    {
+      "group": "Tooling",
+      "items": [
+        "Git",
+        "Docker",
+        "Linux",
+        "CI/CD",
+        "pytest"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "AI Developer",
+      "company": "Takira Solutions",
+      "period": "Present",
+      "points": [
+        "Design and ship AI-powered features end to end: data pipelines, model integration, APIs and UI.",
+        "Work across document intelligence, semantic search and LLM-based assistants."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech, Artificial Intelligence and Data Science",
+      "detail": "Vice President, AI & Data Science Department; Ladies Representative"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Pomegranate Disease Detection using Deep Learning",
+      "venue": "Published research paper",
+      "summary": "A deep learning approach to detecting diseases in pomegranate crops.",
+      "link": ""
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "ai-agent",
+    "title": "AI Agent (in progress)",
+    "summary": "A new AI agent I'm building from scratch as my flagship project. Details and a demo will appear here when it's ready.",
+    "description": "I'm currently building a new AI agent from scratch. This page will be updated with how it works, the models behind it and a live demo as soon as it's ready.",
+    "tags": [
+      "AI Agent",
+      "LLM",
+      "Python"
+    ],
+    "featured": true,
+    "status": "In progress",
+    "github": "",
+    "demo": "",
+    "highlights": []
+  },
+  {
+    "slug": "pomegranate-disease-detection",
+    "title": "Pomegranate Disease Detection",
+    "summary": "A deep learning approach to detecting diseases in pomegranate crops, published as a research paper.",
+    "description": "A deep learning project on detecting diseases in pomegranate crops, helping identify problems early. The work was published as a research paper.",
+    "tags": [
+      "Deep Learning",
+      "Research",
+      "Agriculture"
+    ],
+    "featured": true,
+    "status": "Published",
+    "github": "",
+    "demo": "",
+    "highlights": [
+      "Published research paper"
+    ]
+  }
+]

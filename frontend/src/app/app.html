@@ -1,0 +1,41 @@
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" [class.solid]="scrolled() || menu()">
+  <div class="container bar">
+    <a routerLink="/" class="logo" aria-label="Home"><span class="grad-text">&lt;Arpita/&gt;</span></a>
+
+    <nav [class.open]="menu()" aria-label="Main">
+      <a routerLink="/" fragment="about">About</a>
+      <a routerLink="/" fragment="skills">Skills</a>
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/blog" routerLinkActive="active">Blog</a>
+      <a routerLink="/contact" routerLinkActive="active" class="cta">Let's talk</a>
+    </nav>
+
+    <div class="tools">
+      <button class="icon" (click)="toggleTheme()" [attr.aria-label]="theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
+        {{ theme() === 'dark' ? '☀' : '☾' }}
+      </button>
+      <button class="icon burger" (click)="menu.set(!menu())" [attr.aria-expanded]="menu()" aria-label="Menu">{{ menu() ? '✕' : '☰' }}</button>
+    </div>
+  </div>
+</header>
+
+<main id="main"><router-outlet /></main>
+
+<footer>
+  <div class="container foot">
+    @if (api.profile$ | async; as p) {
+      <p>© {{ year }} {{ p.name }} · {{ p.location }}</p>
+      <div class="links">
+        @if (p.socials.github) { <a [href]="p.socials.github" target="_blank" rel="noopener">GitHub</a> }
+        @if (p.socials.linkedin) { <a [href]="p.socials.linkedin" target="_blank" rel="noopener">LinkedIn</a> }
+        <a [href]="'mailto:' + p.email">Email</a>
+      </div>
+    } @else {
+      <p>© {{ year }} Arpita</p>
+    }
+  </div>
+</footer>
+
+<app-chat-widget />

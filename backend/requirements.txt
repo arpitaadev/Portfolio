@@ -1,0 +1,4 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+# Later, when you move from JSON to a database:
+# sqlalchemy>=2.0

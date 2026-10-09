@@ -1,0 +1,33 @@
+<button class="fab" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-label="Toggle portfolio assistant">
+  @if (open()) { <span aria-hidden="true">✕</span> } @else { <span aria-hidden="true">✦</span> }
+</button>
+
+@if (open()) {
+  <section class="panel" role="dialog" aria-label="Portfolio assistant">
+    <header>
+      <span class="dot"></span>
+      <div><strong>Ask about Arpita</strong><small>Answers come from this portfolio's own content</small></div>
+    </header>
+
+    <div class="msgs" #scroller aria-live="polite">
+      @for (m of messages(); track $index) {
+        <div class="msg" [class.me]="m.from === 'me'">
+          <p>{{ m.text }}</p>
+          @if (m.sources?.length) { <small>Source: {{ m.sources!.join(' · ') }}</small> }
+        </div>
+      }
+      @if (busy()) { <div class="msg typing"><span></span><span></span><span></span></div> }
+    </div>
+
+    @if (messages().length < 3) {
+      <div class="chips">
+        @for (s of suggestions; track s) { <button (click)="send(s)">{{ s }}</button> }
+      </div>
+    }
+
+    <form (ngSubmit)="send()">
+      <input name="q" [(ngModel)]="draft" placeholder="Type a question…" maxlength="500" autocomplete="off" aria-label="Your question">
+      <button type="submit" [disabled]="busy() || !draft.trim()" aria-label="Send">➤</button>
+    </form>
+  </section>
+}
